@@ -4,7 +4,15 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; 
+  background: #fff;
+  box-shadow: 0 4px 5px 2px rgb(0 0 0 / 30%);
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 code {

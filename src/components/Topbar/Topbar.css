@@ -1,0 +1,111 @@
+.topbar{
+    background: #fff;
+    height: 80px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.logoimage{
+    position: absolute;
+    top:13px;
+    left:67px;
+}
+
+.rightdiv{
+   height: 80px;
+   margin-left: 40vw;
+}
+
+.box1{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height:80px
+}
+
+.input{
+    width: 171px;
+    height: 29.5px;
+    border-radius: 1px;
+    background-color: #fff;
+    box-shadow: none;
+    border: solid 1px #c2c1c1;
+    font-size: .7775rem;
+    outline: none;
+    padding:2px 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+}
+
+
+
+.button{
+    width: 70px;
+    height: 29px;
+    margin-top: 1px;
+    border-radius: 1px;
+    background-color: #4a90e2!important;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 50%);
+    color: #fff;
+    text-shadow: none;
+    border: none;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+
+.google{
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    margin: 0 4px;
+    display: inline-block;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 25%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url(https://cdn.codechef.com/images/icons/google-oauth.svg);
+    
+}
+
+.github{
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    margin: 0 4px;
+    display: inline-block;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 25%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url(https://cdn.codechef.com/images/icons/github-oauth.svg);
+    
+}
+
+
+.facebook{
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    margin: 0 4px;
+    display: inline-block;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 25%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-image: url(https://cdn.codechef.com/images/icons/fb-oauth.svg);
+    
+}
+
+
+.vl{
+    height:40px;
+    width:1px;
+   background-color: #c2c1c1;
+   margin-left: 15px;
+   margin-right: 15px;
+}
