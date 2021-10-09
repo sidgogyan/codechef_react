@@ -1,7 +1,33 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import './Allquestions.css'
 
 const Allquestions = () => {
+
+    const [time, settime] = useState({
+       days:"",
+       hours:"",
+       min:"",
+       seconds:""
+    })
+   
+
+   useEffect(() => {
+
+    setInterval(() => {
+        
+        var countDownDate = new Date("Oct 25, 2021 20:00:00").getTime();
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+    
+        var days1 = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours1= Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes1 = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds1 = Math.floor((distance % (1000 * 60)) / 1000);
+
+        settime({days:days1,hours:hours1,min:minutes1,seconds:seconds1})}, 1000);
+  
+
+   })
     return (
         <>
         <div className="aq_box1">
@@ -66,7 +92,20 @@ const Allquestions = () => {
        
 
         <div className="aq_box3">
-            Hello world
+           <div className="aq_right_box_1">
+           <div className="aq_heading2"><h2 >Contest Ends In</h2></div>
+          
+          <div className="timer">{time.days}</div>
+          <div className="timer">{time.hours}</div>
+          <div className="timer">{time.min}</div>
+          <div className="timer">{time.seconds}</div>
+
+           </div>
+
+           <div className="aq_right_box_1">
+           <div className="aq_heading2"><h2 >Contest Ranks</h2></div>
+           <button type="submit" className="button">Go to Contest Ranks</button>
+           </div>
         </div>
         </div> 
         </>
