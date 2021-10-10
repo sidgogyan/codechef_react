@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import './Allquestions.css'
+import { Link } from 'react-router-dom'
 
 const Allquestions = () => {
 
@@ -53,7 +54,7 @@ const Allquestions = () => {
    
    return  <tr>
 
-<td className="fancy">{question.name}</td>
+<td  className="fancy"><Link to={`contest/problem/${question.code}`} style={{textDecoration:'none',color:'#3b5998'}}>{question.name}</Link></td>
 <td className="fancy">{question.code}</td>
 <td>{question.submission}</td>
 <td className="fancy">{question.accuracy}</td>

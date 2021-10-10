@@ -6,7 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; 
   background: #fff;
-  box-shadow: 0 4px 5px 2px rgb(0 0 0 / 30%);
 }
 
 *{
