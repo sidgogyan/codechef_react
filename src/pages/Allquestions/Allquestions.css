@@ -59,6 +59,23 @@
     color: #535353;
   }
 
+  .color_heading{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    background-color: #eee;
+    color: #535353;
+    font-size: 16px;
+  }
+
+  .aq_text{
+    font: 400 normal 14px Helvetica,sans-serif;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    margin-top: 15px;
+  }
+
   #aq_table td {
    text-align: center;
   }

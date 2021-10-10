@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react'
+import axios from 'axios'
 import './Allquestions.css'
 
 const Allquestions = () => {
@@ -10,6 +11,12 @@ const Allquestions = () => {
        seconds:""
     })
    
+    const [questions,setquestion]=useState([])
+
+    useEffect(async()=>{
+  const res=  await  axios.get("https://mocki.io/v1/74d178c1-f87f-4f92-8cf8-1675129c3122")
+    setquestion(res.data);
+    },[])
 
    useEffect(() => {
 
@@ -42,51 +49,31 @@ const Allquestions = () => {
     <th>Sucessfull submission</th>
     <th>Accuracy</th>
   </tr>
-  <tr>
-    <td className="fancy">Which Mixture</td>
-    <td className="fancy">Mixture</td>
-    <td>1904</td>
-    <td className="fancy">65.17</td>
-  </tr>
-  <tr>
-  <td className="fancy">Which Mixture</td>
-    <td className="fancy">Mixture</td>
-    <td>1904</td>
-    <td className="fancy">65.17</td>
-  </tr>
-  <tr>
-  <td className="fancy">Which Mixture</td>
-    <td className="fancy">Mixture</td>
-    <td>1904</td>
-    <td className="fancy">65.17</td>
-  </tr>
-  <tr>
-  <td className="fancy">Which Mixture</td>
-    <td className="fancy">Mixture</td>
-    <td>1904</td>
-    <td className="fancy">65.17</td>
-  </tr>
-  <tr>
-  <td className="fancy">Which Mixture</td>
-    <td className="fancy">Mixture</td>
-    <td>1904</td>
-    <td className="fancy">65.17</td>
-  </tr>
-  <tr>
-  <td className="fancy">Which Mixture</td>
-    <td className="fancy">Mixture</td>
-    <td>1904</td>
-    <td className="fancy">65.17</td>
-  </tr>
-  <tr>
-  <td className="fancy">Which Mixture</td>
-    <td className="fancy">Mixture</td>
-    <td>1904</td>
-    <td className="fancy">65.17</td>
-  </tr>
+  {questions.map((question)=>{
+   
+   return  <tr>
+
+<td className="fancy">{question.name}</td>
+<td className="fancy">{question.code}</td>
+<td>{question.submission}</td>
+<td className="fancy">{question.accuracy}</td>
+</tr> 
+  })
+  
+  }
  
 </table>
-        
+
+<h4 className="color_heading" >ANNOUNCEMENTS</h4>
+  <p className="aq_text">
+<b>4th Oct 13:10 IST:</b> Problem <b>HIDDENPTS</b> has been added.</p>
+<p className="aq_text">
+<b>3rd Oct 20:00 IST:</b> In Problem  <b>OLYMRANK,</b> you can choose atmost K medals and change their color. The same has been updated in problem statement.</p>
+<p className="aq_text">
+<b>1st Oct 17:20 IST:</b> Problem <b>OLYMRANK</b> has been added.</p>
+<p className="aq_text">
+<b>1st Oct 15:00 IST:</b> We will be adding two more problems to the contest.
+  </p>
         </div>
 
        

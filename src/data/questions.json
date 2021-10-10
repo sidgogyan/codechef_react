@@ -1,0 +1,46 @@
+[
+ {
+    "name": "Which Mixture",
+"code": "MIXTURE",
+"submission": "19894",
+"accuracy": "65.06"
+ },
+ {
+    "name": "Three Boxes",
+    "code": "THREEBOX",
+    "submission": "16034",
+    "accuracy": "37.61"
+ },
+ {
+    "name": "Longest AND Subarray",
+    "code": "ANDSUBAR",
+    "submission": "8706",
+    "accuracy": "37.15"
+ },
+ {
+    "name": "MEX-OR",
+    "code": "MEXOR",
+    "submission": "5558",
+    "accuracy": "40.59"
+ },
+ {
+    "name": "Digit Removal",
+    "code": "DIGITRAM",
+    "submission": "3880",
+    "accuracy": "20.16"
+ },
+ {
+    "name": "Yet another MEX problem",
+    "code": "MEXPROB",
+    "submission": "13",
+    "accuracy": "0.28"
+ },
+ {
+    "name": "Characteristic Polynomial V",
+    "code": "CHARVAR",
+    "submission": "5",
+    "accuracy": "0.85"
+ }
+
+
+]
