@@ -16,7 +16,7 @@ function App() {
      <Topbar/>
      <Switch>
       <Route path="/contest" exact component={Allquestions}/>
-      <Route path="/contest/problem/:name" exact component={Question}/>
+      <Route path="/contest/problem/:name/:code" exact component={Question}/>
      </Switch>
     </Router>
   );
