@@ -2,7 +2,8 @@ import React,{useState,useEffect,useRef} from 'react'
 import Markdown from 'markdown-to-jsx';
 import axios from 'axios'
 import './Question.css'
-import { useParams } from 'react-router';
+import { useParams} from 'react-router';
+import { Link } from 'react-router-dom';
 const Question = () => {
 
     const {name,code} =useParams();
@@ -73,7 +74,7 @@ const Question = () => {
               <span style={{margin:"0 18px",height:'10px',width:'1px',backgroundColor:'#4a4a4a'}}></span>
               <span style={{color:'#4a4a4a',fontSize:'16px'}}>Problem Code: <b>{code}</b></span>
               </div>
-              <button type="submit"  className="button" style={{marginRight:"20px"}}s>Submit</button>
+              <Link to={`/contest/submit/${name}/${code}`} style={{textDecoration:'none',color:'#3b5998'}}>  <button  className="button" style={{marginRight:"20px"}}>Submit</button></Link>
               </div>
            
 
@@ -92,7 +93,7 @@ const Question = () => {
 
 
 
-            <button type="submit" className="button" style={{marginLeft:"38%",marginBottom:"20px"}}>Submit</button>
+            <Link to={`/contest/submit/${name}/${code}`} style={{textDecoration:'none',color:'#3b5998'}}>  <button  className="button" style={{marginLeft:"38%",marginBottom:"20px"}}>Submit</button></Link>
             </div>
 
             <div className="aq_box3">
