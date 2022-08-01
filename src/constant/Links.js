@@ -1,1 +1,1 @@
-export const BASEDIR="http://localhost:5000"
+export const BASEDIR="https://codechef-backend-docker.herokuapp.com/"
