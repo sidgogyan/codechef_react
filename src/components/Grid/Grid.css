@@ -1,0 +1,92 @@
+.bot_base h1{
+    box-sizing: border-box;
+    font-family: Open Sans,serif;
+    background: 0 0;
+    letter-spacing: 0;
+    color: #4a4a4a;
+    outline: 0;
+
+}
+
+.bot_base h3{
+    box-sizing: border-box;
+    font-family: Open Sans,serif;
+    background: 0 0;
+    letter-spacing: 0;
+    color: #4a4a4a;
+    outline: 0;
+}
+
+.mygrid1{
+    flex: 0 0 auto;
+    width: 280px;
+    margin: 0 10px;
+    cursor: grab;
+}
+.mygrid2{
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.mygrid3{
+    margin: auto;
+    max-width: 300px;
+    background: #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#ffffff));
+    background: -o-linear-gradient(#f5f5f5, #ffffff);
+    background: linear-gradient(#f5f5f5, #ffffff);
+    -webkit-transition: 0.4s all;
+    -o-transition: 0.4s all;
+    transition: 0.4s all;
+    -webkit-box-shadow: inset 0 4px 7px 1px #ffffff, inset 0 -5px 20px rgb(173 186 204 / 25%), 0 2px 6px rgb(0 21 64 / 14%), 0 10px 20px rgb(0 21 64 / 5%);
+    box-shadow: inset 0 4px 7px 1px #ffffff, inset 0 -5px 20px rgb(173 186 204 / 25%), 0 2px 6px rgb(0 21 64 / 14%), 0 10px 20px rgb(0 21 64 / 5%);
+    border-radius: 15px;
+}
+
+.mygrid4{
+    height: 200px;
+    position: relative;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background: #00c1de;
+    background: -webkit-gradient(linear, left top, left bottom, from(#167af4), to(#00c1de));
+    background: -o-linear-gradient(#167af4, #00c1de);
+    background: linear-gradient(#167af4, #00c1de);
+}
+.mygrid5{
+    background-size: 350px 200px;
+    background-position: right center;
+    transition: 0.4s all;
+    position: relative;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 15px;
+    height: 100%;
+}
+
+.desc{
+    text-shadow: 0 0 20px rgb(0 0 0 / 60%);
+    color: white;
+    font-weight: 500;
+    line-height: 18px;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.title{
+    text-shadow: 0 0 20px rgb(0 0 0 / 60%);
+    line-height: 1.2;
+    margin-top: 7px;
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+
+.bot_base{
+    height: 84px;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    z-index: 1;
+    display: flex;
+}

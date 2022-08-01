@@ -1,7 +1,7 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
+import { useParams } from 'react-router-dom';
 import "./Submit.css"
 import axios from 'axios';
-
 import AceEditor from "react-ace";
 
 import "ace-builds/src-noconflict/mode-java";
@@ -12,18 +12,44 @@ import "ace-builds/src-noconflict/mode-markdown";
 import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "ace-builds/src-noconflict/theme-terminal";
+import "ace-builds/src-noconflict/theme-textmate";
 
 
 
 const Submit = () => {
 
 
- 
-const defaultcode=`#cook Your cookies here`
+let {name}=useParams(); 
+const [defaultcode,setdefaultcode]=useState(localStorage.getItem(name)?localStorage.getItem(name):undefined)
 const [code, setcode] = useState(defaultcode)
-const [input, setinput] = useState("")
+const [input, setinput] = useState(undefined)
 const [result, setresult] = useState("")
 const [isloading, setisloading] = useState(false)
+const [post,setpost]=useState({})
+
+
+useEffect(() => {
+
+   const getpost=async()=>{
+     const data=await axios.get(`http://localhost:5000/problem/${name}`)
+
+     setpost(data.data.message)
+     if(defaultcode===undefined){
+      setcode(data.data.message.template_code)
+     }
+     
+     
+     
+    }
+
+    getpost();
+   
+    
+    
+  },[]);
+
+
+
 const [output, setoutput] = useState({
   isoutput:false,
   value:""
@@ -33,7 +59,8 @@ const [output, setoutput] = useState({
     function onChange(newValue) {
         
         setcode(newValue)
-        console.log("change", code);
+       localStorage.setItem(name,newValue)
+      //  console.log(localStorage.getItem(name))
       }
     
       function onChangeinput(newValue) {
@@ -42,11 +69,23 @@ const [output, setoutput] = useState({
       
       }
 
-
+const submitcode=(async()=>{
+  setisloading(true)
+  const body={
+    usercode:code,
+    problemID:1,
+  }
+   const res=await axios.post("http://localhost:5000/api/run_code/judge",body)
+   console.log(res.data)
+   setisloading(false)
+   setresult(res.data)
+   window.scrollTo({
+    top:100,
+    behavior:'smooth'
+    })
+})
 
       const runcode=(async()=>{
-
-       console.log(code)
        setoutput({
         isoutput:false,
         val:""
@@ -55,8 +94,12 @@ const [output, setoutput] = useState({
       setresult("")
         
 
-       const res=await axios.post("http://localhost:8000/hii/",{code,input})
-
+      const body={
+        usercode:code,
+        input:input,
+      }
+       const res=await axios.post("http://localhost:5000/api/run_code/",body)
+       
 
        setoutput({
          isoutput:true,
@@ -65,52 +108,38 @@ const [output, setoutput] = useState({
 
        console.log(res.data.val)
       
-       if(res.data.val=="wrong"){
-        setresult("wrong")
-       }
-       else{
-        setresult("right")
-       }
+      //  if(res.data.val=="wrong"){
+      //   setresult("wrong")
+      //  }
+      //  else{
+      //   setresult("right")
+      //  }
 
-  
        setisloading(false)
 
-       window.scrollTo({
-        top:100,
-        behavior:'smooth'
-        })
+     
 
 
       })
-
-
-
-
-
-    
-
-   
-
-      
     return (
        <>
        <div className="question_box1">
 
        <div className="upperdiv1">
-        <span className="heading">Contest Code: </span>
-        <span className="fancy1">Oct2021</span>
+        <span className="heading">Problem Name: </span>
+        <span className="fancy1">{post.problemName}</span>
 
         <span className="heading">Problem Code: </span>
-        <span className="fancy1">MAXXOR</span>
+        <span className="fancy1">{post.problemCode}</span>
        </div>
 {/*###########################################################################################3*/}
 {/* <div className="upperdiv2">
 
 </div> */}
        
-{result==="right" && <div className="upperdiv1" style={{border: "1px solid #71b968",backgroundColor: "#e4fae1"}}>
+{result.status=='1' && <div className="upperdiv1" style={{border: "1px solid #71b968",backgroundColor: "#e4fae1"}}>
         <span className="heading" >Status: </span>
-        <span style={{marginRight:"10px"}} >Correct Answer</span>
+        <span style={{marginRight:"10px"}} >{result.message}</span>
 
         <span className="heading">Time: </span>
         <span style={{marginRight:"10px"}} >0.92 sec</span>
@@ -120,9 +149,9 @@ const [output, setoutput] = useState({
        </div>
 }
 
-  {result==="wrong" && <div className="upperdiv1" style={{border: "1px solid red",backgroundColor: "#fcf1f1"}}>
+  {result.status==='0' && <div className="upperdiv1" style={{border: "1px solid red",backgroundColor: "#fcf1f1"}}>
         <span className="heading" >Status: </span>
-        <span style={{marginRight:"10px"}} >Wrong Answer</span>
+        <span style={{marginRight:"10px"}} >{result.message}</span>
 
         <span className="heading">Time: </span>
         <span style={{marginRight:"10px"}} >0.92 sec</span>
@@ -133,13 +162,14 @@ const [output, setoutput] = useState({
   }
 {/*###########################################################################################3*/}
        <AceEditor
-    mode="python"
-    theme="tomorrow"
+    mode="java"
+    theme="textmate"
     fontSize="14px"
     showPrintMargin={false}
     onChange={onChange}
     name="UNIQUE_ID_OF_DIV"
     editorProps={{ $blockScrolling: true }}
+    value={code}
     className="editor"
     defaultValue={defaultcode}
     maxLines={24}
@@ -156,7 +186,7 @@ const [output, setoutput] = useState({
     <div>
       <button className="mybtn" style={{marginRight:"20px"}} onClick={()=>runcode()}>Run</button>
       {isloading && <span>Loading</span>}
-      <button className="mybtn">Submit</button>
+      <button className="mybtn" onClick={()=>submitcode()}>Submit</button>
       </div>
   </div>
 
@@ -187,7 +217,7 @@ const [output, setoutput] = useState({
 
 
 
-{/* {output.isoutput &&
+{output.isoutput &&
   <div>
   <p style={{marginLeft:"5%",marginTop:"20px",color:"#666",marginBottom:"3px"}}>Output Box</p>
   
@@ -207,7 +237,7 @@ const [output, setoutput] = useState({
     readOnly={true}
     highlightActiveLine={false}
 
-  /></div>} */}
+  /></div>} 
 
        </div>
 

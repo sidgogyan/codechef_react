@@ -1,0 +1,86 @@
+.slider_complete_box{
+    background: #f8f8f8;
+    box-shadow: -2px 0 4px rgb(0 0 0 / 10%);
+    width:100%;
+    min-height: 70vh;
+    border: 1px solid #d2d9e7;
+    border-radius: 10px;
+    display: flex;
+}
+
+.left_slider img{
+    height: 70vh;
+    width: 800px;
+}
+
+.right_slider{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.right_slider h1{
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: .32px;
+    color: #363636;
+    margin-bottom: 24px;
+    max-width: 350px;
+    width: 100%;
+    margin-top: 50px;
+
+}
+
+.right_slider p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .32px;
+    color: #4a4a4a;
+    max-width: 350px;
+    width: 100%;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.divider{
+    max-width: 312px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    margin: 0 0 16px;
+    margin-top: 150px;
+}
+
+.right_slider a{
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #4b7abd;
+    text-decoration: none;
+
+}
+
+.right_slider a span{
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    left: 11px;
+    position: relative;
+    background: #5a86DC15;
+}
+
+.right_slider a span i{
+    background: url(https://cdn.codechef.com/images/icons/right-arrow-blue.svg);
+    display: inline-block;
+    width: 14px;
+    height: 10px;
+}

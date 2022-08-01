@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react'
-import Markdown from 'markdown-to-jsx';
+import ReactMarkdown from 'react-markdown'
 import axios from 'axios'
 import './Question.css'
 import { useParams} from 'react-router';
@@ -15,25 +15,41 @@ const Question = () => {
         seconds:""
      })
 
-     const [post, setpost] = useState({
-        content:""
-     })
+     const [post, setpost] = useState({})
+
+     useEffect(() => {
+  
+        const getpost=(async()=>{
+          const data=await axios.get(`http://localhost:5000/problem/${name}`)
+  
+          setpost(data.data.message)
+          console.log(data)
+          
+          
+         
+          
+         })
+         
+         getpost()
+         
+         
+       }, []);
 
 
 
-     useEffect(()=>{
+    //  useEffect(()=>{
        
-        import(`../../content/${code}/question.md`).then(res => {
-          fetch(res.default)
-              .then(res => res.text())
-              .then(res => setpost({content:res}))
-              .catch(err => console.log(err));
-      })
-      .catch(err => console.log(err));
+    //     import(`../../content/${code}/question.md`).then(res => {
+    //       fetch(res.default)
+    //           .then(res => res.text())
+    //           .then(res => setpost({content:res}))
+    //           .catch(err => console.log(err));
+    //   })
+    //   .catch(err => console.log(err));
 
 
       
-       },[])
+    //    },[])
 
        
 
@@ -86,9 +102,10 @@ const Question = () => {
             <div className="main_content">
            
 
-            <Markdown style={{marginLeft:"10px",marginBottom:"20px"}} >
-                {post.content}
-            </Markdown>
+           
+              <ReactMarkdown style={{marginLeft:"10px",marginBottom:"20px"}} >
+              { post.description}
+            </ReactMarkdown>  
             </div>
 
 

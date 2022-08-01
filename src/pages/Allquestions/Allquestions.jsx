@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import './Allquestions.css'
-import { Link } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 
 const Allquestions = () => {
 
@@ -13,17 +13,38 @@ const Allquestions = () => {
     })
    
     const [questions,setquestion]=useState([])
+    const [category,setcategory]=useState({})
+    const [endTime,setendTime]=useState("2023-07-25,8:00:00")
 
-    useEffect(async()=>{
-  const res=  await  axios.get("https://mocki.io/v1/74d178c1-f87f-4f92-8cf8-1675129c3122")
-    setquestion(res.data);
-    },[])
+    const {categoryName}=useParams()
+
+    useEffect(() => {
+  
+      const getcategory=async()=>{
+        const data=await axios.get(`http://localhost:5000/category/${categoryName}`)
+
+        await setcategory(data.data.message)
+        // console.log(data.data.message.categoryID)
+        const res=  await  axios.get(`http://localhost:5000/problem/category/${data.data.message.categoryID}`)
+
+        setquestion(res.data.message);
+        // console.log(`http://localhost:5000/problem/category/${data.data.message.categoryId}`)
+        
+        // //  setendTime(data.data.message.endTime)
+        // setendTime(data.data.message.endTime.substring(0,10))
+        
+       }
+       
+       getcategory()
+       
+       
+     }, []);
 
    useEffect(() => {
-
+   
     setInterval(() => {
-        
-        var countDownDate = new Date("Oct 25, 2021 20:00:00").getTime();
+      
+        var countDownDate = new Date(`${endTime}, 8:00:00`).getTime();
         var now = new Date().getTime();
         var distance = countDownDate - now;
     
@@ -40,24 +61,24 @@ const Allquestions = () => {
         <>
         <div className="aq_box1">
         <div className="aq_box2">
-         <img  style={{width:'100%'}}src="https://cdn.codechef.com/download/small-banner/OCT21C/1632665057.png"/>
-         <h3 className="aq_heading" >Scorable Problems for Division 3</h3>
+         <img  style={{width:'100%',height:"230px"}}src={category.imageLink}/>
+         <h3 className="aq_heading" >{category.categoryName} Top Interview Questions</h3>
 
          <table id="aq_table">
   <tr>
     <th>Name</th>
     <th>Code</th>
-    <th>Sucessfull submission</th>
+    <th>Difficulty</th>
     <th>Accuracy</th>
   </tr>
   {questions.map((question)=>{
    
    return  <tr>
 
-<td  className="fancy"><Link to={`contest/problem/${question.name}/${question.code}`} style={{textDecoration:'none',color:'#3b5998'}}>{question.name}</Link></td>
-<td className="fancy">{question.code}</td>
-<td>{question.submission}</td>
-<td className="fancy">{question.accuracy}</td>
+<td  className="fancy"><Link to={`contest/problem/${question.problemName}/${question.problemCode}`} style={{textDecoration:'none',color:'#3b5998'}}>{question.problemName}</Link></td>
+<td className="fancy">{question.problemCode}</td>
+<td>{question.difficulty}</td>
+<td className="fancy">{66.66}</td>
 </tr> 
   })
   
