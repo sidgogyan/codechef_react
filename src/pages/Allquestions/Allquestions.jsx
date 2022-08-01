@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import './Allquestions.css'
 import { Link,useParams } from 'react-router-dom'
+import { BASEDIR } from '../../constant/Links'
 
 const Allquestions = () => {
 
@@ -15,17 +16,18 @@ const Allquestions = () => {
     const [questions,setquestion]=useState([])
     const [category,setcategory]=useState({})
     const [endTime,setendTime]=useState("2023-07-25,8:00:00")
+    
 
     const {categoryName}=useParams()
 
     useEffect(() => {
   
       const getcategory=async()=>{
-        const data=await axios.get(`http://localhost:5000/category/${categoryName}`)
+        const data=await axios.get(`${BASEDIR}/category/${categoryName}`)
 
         await setcategory(data.data.message)
         // console.log(data.data.message.categoryID)
-        const res=  await  axios.get(`http://localhost:5000/problem/category/${data.data.message.categoryID}`)
+        const res=  await  axios.get(`${BASEDIR}/problem/category/${data.data.message.categoryID}`)
 
         setquestion(res.data.message);
         // console.log(`http://localhost:5000/problem/category/${data.data.message.categoryId}`)

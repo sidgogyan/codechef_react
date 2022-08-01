@@ -1,0 +1,1 @@
+export const BASEDIR="http://localhost:5000"

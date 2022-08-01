@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import "./Submit.css"
 import axios from 'axios';
 import AceEditor from "react-ace";
+import { BASEDIR } from '../../constant/Links';
 
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-c_cpp";
@@ -31,7 +32,7 @@ const [post,setpost]=useState({})
 useEffect(() => {
 
    const getpost=async()=>{
-     const data=await axios.get(`http://localhost:5000/problem/${name}`)
+     const data=await axios.get(`${BASEDIR}/problem/${name}`)
 
      setpost(data.data.message)
      if(defaultcode===undefined){
@@ -75,7 +76,7 @@ const submitcode=(async()=>{
     usercode:code,
     problemID:1,
   }
-   const res=await axios.post("http://localhost:5000/api/run_code/judge",body)
+   const res=await axios.post(`${BASEDIR}/api/run_code/judge`,body)
    console.log(res.data)
    setisloading(false)
    setresult(res.data)
@@ -98,7 +99,7 @@ const submitcode=(async()=>{
         usercode:code,
         input:input,
       }
-       const res=await axios.post("http://localhost:5000/api/run_code/",body)
+       const res=await axios.post(`${BASEDIR}/api/run_code/`,body)
        
 
        setoutput({

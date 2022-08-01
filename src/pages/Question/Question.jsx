@@ -4,6 +4,7 @@ import axios from 'axios'
 import './Question.css'
 import { useParams} from 'react-router';
 import { Link } from 'react-router-dom';
+import { BASEDIR } from '../../constant/Links';
 const Question = () => {
 
     const {name,code} =useParams();
@@ -20,7 +21,7 @@ const Question = () => {
      useEffect(() => {
   
         const getpost=(async()=>{
-          const data=await axios.get(`http://localhost:5000/problem/${name}`)
+          const data=await axios.get(`${BASEDIR}/problem/${name}`)
   
           setpost(data.data.message)
           console.log(data)

@@ -3,6 +3,7 @@ import Slider  from "react-slick";
 import './Slider.css'
 import axios from "axios"
 import { Link } from 'react-router-dom';
+import { BASEDIR } from '../../constant/Links';
 
 
 const MySlider = () => {
@@ -11,7 +12,7 @@ const MySlider = () => {
   useEffect(() => {
   
    const getbanners=async()=>{
-     const data=await axios.get("http://localhost:5000/category")
+     const data=await axios.get(`${BASEDIR}/category`)
       setbanner(data.data.message)
     }
     getbanners()
